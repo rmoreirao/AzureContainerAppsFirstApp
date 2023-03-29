@@ -1,0 +1,180 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-backend-api",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppWebAPI/FirstACAAppWebAPI.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-backend-api",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppWebAPI/FirstACAAppWebAPI.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch-backend-api",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppWebAPI/FirstACAAppWebAPI.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-webapp-ui",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppClient/FirstACAAppClient.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-webapp-ui",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppClient/FirstACAAppClient.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch-webapp-ui",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppClient/FirstACAAppClient.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-processor-svc",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppBackendSvc/FirstACAAppBackendSvc.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-processor-svc",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppBackendSvc/FirstACAAppBackendSvc.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch-processor-svc",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/src/FirstACAApp/FirstACAAppBackendSvc/FirstACAAppBackendSvc.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-all",
+            "dependsOn": [
+                "build-backend-api",
+                "build-webapp-ui",
+                "build-processor-svc"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "appId": "tasksmanager-backend-api",
+            "appPort": 7218,
+            "httpPort": 3500,
+            "appSsl": true,
+            "label": "backend-api-dapr-debug",
+            "type": "dapr",
+            "dependsOn": "build-backend-api",
+            "args": [
+                "--resources-path","./components",
+                "--dapr-grpc-port", "50001"
+            ],
+        },
+        {
+            "appId": "tasksmanager-backend-api",
+            "label": "daprd-down-backend-api",
+            "type": "daprd-down"
+        },
+        {
+            "appId": "tasksmanager-frontend-webapp",
+            "appPort": 7219,
+            "httpPort": 3501,
+            "appSsl": true,
+            "label": "webapp-ui-dapr-debug",
+            "type": "dapr",
+            "dependsOn": "build-webapp-ui",
+            "args": [
+                "--resources-path","./components",
+                "--dapr-grpc-port", "50002"
+            ],
+        },
+        {
+            "appId": "tasksmanager-frontend-webapp",
+            "label": "webapp-ui-daprd-down",
+            "type": "daprd-down"
+        },
+        {
+            "appId": "tasksmanager-backend-processor",
+            "appPort": 7220,
+            "httpPort": 3502,
+            "appSsl": true,
+            "label": "processor-svc-dapr-debug",
+            "type": "dapr",
+            "dependsOn": "build-processor-svc",
+            "args": [
+                "--resources-path","./components",
+                "--dapr-grpc-port", "50003"
+            ],
+        },
+        {
+            "appId": "tasksmanager-backend-processor",
+            "label": "processor-svc-daprd-down",
+            "type": "daprd-down"
+        }
+    ]
+}
