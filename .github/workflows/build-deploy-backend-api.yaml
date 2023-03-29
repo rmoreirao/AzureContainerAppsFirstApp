@@ -37,7 +37,7 @@ jobs:
           push: true
           tags: taskstrackeracrrmoreirao.azurecr.io/tasksmanager-backend-api:${{ github.sha }} , taskstrackeracrrmoreirao.azurecr.io/tasksmanager-backend-api:latest
           file: src/FirstACAApp/FirstACAAppWebAPI/Dockerfile
-          context: ./.
+          context: src/FirstACAApp/
 
 
   deploy:
