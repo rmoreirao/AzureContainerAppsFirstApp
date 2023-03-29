@@ -6,7 +6,7 @@ metadata:
   secretRef: sb-root-connectionstring
 secrets:
 - name: sb-root-connectionstring
-  value: "{EndPoint key here}"
+  value: "<pubsubkeyhere>"
 # Application scopes  
 scopes:
 - tasksmanager-backend-api

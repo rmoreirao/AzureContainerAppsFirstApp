@@ -9,6 +9,6 @@ metadata:
   value: "periodicjobcontainer"
 secrets:
 - name: storagekey
-  value: "YcmFkOrbqZ9nQLwEsg9k5Dbn75hYWUrHHu01HmnSI3pZfcKQzdozOUaKCLh5s1F9e4/fzObZ9u+P+AStulKKbg=="
+  value: "<stgkeyhere>"
 scopes:
 - tasksmanager-backend-processor

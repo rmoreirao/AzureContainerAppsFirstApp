@@ -11,6 +11,6 @@ metadata:
   value: taskscollection
 secrets:
 - name: cosmoskey
-  value: "{key here}"
+  value: "<cosmoskeyhere>"
 scopes:
 - tasksmanager-backend-api
