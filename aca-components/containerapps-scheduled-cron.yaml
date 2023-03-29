@@ -1,0 +1,8 @@
+componentType: bindings.cron
+version: v1
+metadata:
+- name: schedule
+  value: "@every 10m"
+# Application scopes  
+scopes:
+- tasksmanager-backend-processor

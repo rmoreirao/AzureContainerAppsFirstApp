@@ -1,4 +1,5 @@
 using Dapr.Client;
+using Microsoft.ApplicationInsights.Extensibility;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,12 @@ builder.Services.AddHttpClient("BackEndApiExternal", httpClient =>
 });
 
 builder.Services.AddSingleton<DaprClient>(_ => new DaprClientBuilder().Build());
+
+builder.Services.AddApplicationInsightsTelemetry();
+ 
+builder.Services.Configure<TelemetryConfiguration>((o) => {
+    o.TelemetryInitializers.Add(new AppInsightsTelemetryInitializer());
+});
 
 var app = builder.Build();
 

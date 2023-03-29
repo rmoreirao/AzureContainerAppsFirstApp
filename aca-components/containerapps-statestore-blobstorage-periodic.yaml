@@ -1,0 +1,14 @@
+componentType: state.azure.blobstorage
+version: v1
+metadata:
+- name: accountName
+  value: "firstacastgrmoreirao"
+- name: accountKey
+  secretRef: storagekey
+- name: containerName
+  value: "periodicjobcontainer"
+secrets:
+- name: storagekey
+  value: "YcmFkOrbqZ9nQLwEsg9k5Dbn75hYWUrHHu01HmnSI3pZfcKQzdozOUaKCLh5s1F9e4/fzObZ9u+P+AStulKKbg=="
+scopes:
+- tasksmanager-backend-processor

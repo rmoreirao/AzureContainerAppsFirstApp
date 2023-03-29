@@ -1,0 +1,14 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: periodicjobstatestore
+spec:
+  type: state.azure.blobstorage
+  version: v1
+  metadata:
+  - name: accountName
+    value: "firstacastgrmoreirao"
+  - name: accountKey
+    value: "YcmFkOrbqZ9nQLwEsg9k5Dbn75hYWUrHHu01HmnSI3pZfcKQzdozOUaKCLh5s1F9e4/fzObZ9u+P+AStulKKbg=="
+  - name: containerName
+    value: "periodicjobcontainer"

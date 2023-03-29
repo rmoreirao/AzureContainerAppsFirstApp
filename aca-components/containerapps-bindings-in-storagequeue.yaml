@@ -1,0 +1,18 @@
+componentType: bindings.azure.storagequeues
+version: v1
+metadata:
+- name: storageAccount
+  value: "firstacastgrmoreirao"
+- name: storageAccessKey
+  secretRef: storagekey
+- name: queue
+  value: "external-tasks-queue"
+- name: decodeBase64
+  value: "true"
+- name: route
+  value: /externaltasksprocessor/process        
+secrets:
+- name: storagekey
+  value: "YcmFkOrbqZ9nQLwEsg9k5Dbn75hYWUrHHu01HmnSI3pZfcKQzdozOUaKCLh5s1F9e4/fzObZ9u+P+AStulKKbg=="
+scopes:
+- tasksmanager-backend-processor

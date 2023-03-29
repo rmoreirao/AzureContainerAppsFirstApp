@@ -1,0 +1,13 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: dapr-pubsub-servicebus
+spec:
+  type: pubsub.azure.servicebus
+  version: v1
+  metadata:
+  - name: connectionString # Required when not using Azure Authentication.
+    value: "Endpoint=sb://taskstrackerrmoreirao.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Izb1CQJk8d7krCQkGQ65Hm7QA5s9sm1Mt+ASbDdvKCA="
+scopes:
+- tasksmanager-backend-api
+- tasksmanager-backend-processor

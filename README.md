@@ -22,6 +22,8 @@ $BACKEND_SVC_NAME="tasksmanager-backend-processor"
 $ACR_NAME="taskstrackeracrrmoreirao"
 $NamespaceName="taskstrackerrmoreirao"
 $TopicName="tasksavedtopic"
+$STORAGE_ACCOUNT_NAME = "firstacastgrmoreirao"
+$workspace = "/subscriptions/afb8f550-216d-4848-b6f1-73b1bbf58f1e/resourcegroups/tasks-tracker-rg/providers/microsoft.operationalinsights/workspaces/workspace-taskstrackerrgLM5w"
 
 
 Upload image to ACR:
@@ -30,8 +32,8 @@ Upload image to ACR:
     az acr build --registry $ACR_NAME --image "tasksmanager/$BACKEND_SVC_NAME" --file 'FirstACAAppBackendSvc/Dockerfile' . 
 
 
-Deploy to env:
-    $RevisionSuffix="v010"
+Deploy to env - Increment Revision for each deploy:
+    $RevisionSuffix="v011"
 
     az containerapp update --name $BACKEND_API_NAME --resource-group $RESOURCE_GROUP --revision-suffix $RevisionSuffix --cpu 0.25 --memory 0.5Gi --min-replicas 1 --max-replicas 3
 

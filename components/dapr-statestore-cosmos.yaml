@@ -9,7 +9,7 @@ spec:
   - name: url
     value: https://taskstracker-state-storermoreirao-eastus.documents.azure.com:443/
   - name: masterKey
-    value: "{key here}"
+    value: "98hLmBzNnXp8ZEup8zHvcsXthHC63Xvc2UfPDYwUpkd4pCaWoOzczzBVFiO8eK4C0eMvvsKdrR0fACDbLAPhkQ=="
   - name: database
     value: tasksmanagerdb
   - name: collection
